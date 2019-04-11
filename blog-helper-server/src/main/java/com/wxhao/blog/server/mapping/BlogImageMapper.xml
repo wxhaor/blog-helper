@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wxhao.blog.server.mapper.BlogImageMapper">
+    <resultMap id="BaseResultMap" type="com.wxhao.blog.server.po.BlogImage">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime"/>
+        <result column="article_id" jdbcType="BIGINT" property="articleId"/>
+        <result column="article_name" jdbcType="VARCHAR" property="articleName"/>
+        <result column="image_key" jdbcType="VARCHAR" property="imageKey"/>
+        <result column="image_hash" jdbcType="VARCHAR" property="imageHash"/>
+        <result column="image_name" jdbcType="VARCHAR" property="imageName"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, create_time, article_id, article_name, image_key, image_hash, image_name
+    </sql>
+    <select id="findImageByArticleId" resultType="com.wxhao.blog.server.po.BlogImage">
+
+        select
+        <include refid="Base_Column_List"/>
+        from blog_image
+        where
+        article_id = #{name}
+        order by create_time desc
+    </select>
+
+</mapper>
