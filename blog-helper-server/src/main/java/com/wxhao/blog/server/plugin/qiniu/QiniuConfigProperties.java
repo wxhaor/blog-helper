@@ -14,5 +14,5 @@ public class QiniuConfigProperties {
     String bucket = "";
     String zoneName = "";
 
-    String urlPrefix = "http://img-everyday.wxhaor.com/";
+    String urlPrefix = "http://img-everyday.wxhaor.com";
 }

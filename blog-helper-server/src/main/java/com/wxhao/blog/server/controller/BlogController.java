@@ -107,7 +107,7 @@ public class BlogController {
         FetchRet fetch = QiniuUploadManageHelper.fetch(form.getRemoteSrcUrl());
         log.info("上传成功-FetchRet:{}", JSONObject.toJSON(fetch));
         //拼装url
-        url.append(qiniuConfigProperties.getUrlPrefix()).append(fetch.key);
+        url.append(qiniuConfigProperties.getUrlPrefix()).append("/").append(fetch.key);
 
         BlogImage blogImage = new BlogImage();
         blogImage.setArticleId(form.getId());
