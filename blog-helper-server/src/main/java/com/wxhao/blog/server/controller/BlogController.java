@@ -54,6 +54,7 @@ public class BlogController {
         return ConvertUtils.convertAfter(images, BlogImageVO.class, (blogImage, blogImageVO) -> {
             StringBuilder url = new StringBuilder();
             url = url.append(qiniuConfigProperties.getUrlPrefix())
+                    .append("/")
                     .append(blogImage.getImageKey());
             blogImageVO.setImageUrl(url.toString());
         });
@@ -83,7 +84,7 @@ public class BlogController {
             DefaultPutRet ret = QiniuUploadManageHelper.simpleUpload(inputStream);
             log.info("上传成功-DefaultPutRet:{}", JSONObject.toJSON(ret));
             //拼装url
-            url.append(qiniuConfigProperties.getUrlPrefix()).append(ret.key);
+            url.append(qiniuConfigProperties.getUrlPrefix()).append("/").append(ret.key);
 
             BlogImage blogImage = new BlogImage();
             blogImage.setArticleId(id);
